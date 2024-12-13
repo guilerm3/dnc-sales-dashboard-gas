@@ -12,7 +12,7 @@ export const StyledButton = styled.button<ButtonProps>`
   height: ${pxToRem(50)};
   padding: 0 ${pxToRem(16)};
   transition: background-color 0.3s;
-  width: 106%;
+  width: 100%;
 
   &.primary {
     background-color: ${(props) => props.theme.buttons.primary};

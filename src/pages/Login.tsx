@@ -78,7 +78,7 @@ function Login() {
                 <StyledP>Digite sua senha e email para logar</StyledP>
               </Box>
               <FormComponent
-                inputs={inputs.map((input, index) =>({
+                  inputs={inputs.map((input, index) =>({
                   type: input.type,
                   placeholder: input.placeholder,
                   value: formValues[index] || '',
@@ -96,7 +96,7 @@ function Login() {
               />
             </Container>
           </Grid>
-          <Grid sm={6} sx={{ display: { xs: "none", sm: "block" } }}>
+          <Grid sm={6} sx={{ display: { xs: "none", sm: "block" }}}>
             <BannerImage />
           </Grid>
         </Grid>
