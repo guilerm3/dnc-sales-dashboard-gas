@@ -5,7 +5,7 @@ import { pxToRem } from "../utils";
 export const StyledH1 = styled.h1<TypohraphiesProps>`
   color: ${(props) => props.color || "inherit"};
   font-size: ${(props) => pxToRem(props.size || 24)};
-  font-weight: ${(props) => pxToRem(props.weight || 600)};
+  font-weight: ${(props) => props.weight || 600};
   letter-spacing: ${pxToRem(-1)};
   line-height: ${(props) => pxToRem(props.lineheight || 36)};
 `;
@@ -14,28 +14,35 @@ export const StyledH1 = styled.h1<TypohraphiesProps>`
 export const StyledH2 = styled.h2<TypohraphiesProps>`
   color: ${(props) => props.color || "inherit"};
   font-size: ${(props) => pxToRem(props.size || 16)};
-  font-weight: ${(props) => pxToRem(props.weight || 600)};
+  font-weight: ${(props) => props.weight || 600};
+  line-height: ${(props) => pxToRem(props.lineheight || 24)};
+`;
+
+export const StyledH3 = styled.h3<TypohraphiesProps>`
+  color: ${(props) => props.color || "inherit"};
+  font-size: ${(props) => pxToRem(props.size || 16)};
+  font-weight: ${(props) => props.weight || 600};
   line-height: ${(props) => pxToRem(props.lineheight || 24)};
 `;
 
 export const StyledP = styled.p<TypohraphiesProps>`
   color: ${(props) => props.color || "inherit"};
   font-size: ${(props) => pxToRem(props.size || 16)};
-  font-weight: ${(props) => pxToRem(props.weight || 400)};
+  font-weight: ${(props) => props.weight || 400};
   line-height: ${(props) => pxToRem(props.lineheight || 24)};
 `;
 
 export const StyledSpan = styled.span<TypohraphiesProps>`
   color: ${(props) => props.color || "inherit"};
   font-size: ${(props) => pxToRem(props.size || 16)};
-  font-weight: ${(props) => pxToRem(props.weight || 400)};
+  font-weight: ${(props) => props.weight || 400};
   line-height: ${(props) => pxToRem(props.lineheight || 24)};
 `;
 
 export const StyledUl = styled.ul<TypohraphiesProps>`
   color: ${(props) => props.color || "inherit"};
   font-size: ${(props) => pxToRem(props.size || 16)};
-  font-weight: ${(props) => pxToRem(props.weight || 400)};
+  font-weight: ${(props) => props.weight || 400};
   line-height: ${(props) => pxToRem(props.lineheight || 24)};
   list-style-position: inside;
   li {
