@@ -1,4 +1,4 @@
-import   {StyledButton, StyledInput}  from "../components"
+import { StyledButton, StyledInput }  from "../components"
 import { FormComponentProps } from "@/types"
 import { pxToRem } from "../utils"
 import styled from "styled-components"
