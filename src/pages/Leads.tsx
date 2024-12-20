@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { ChangeEvent, useEffect, useState } from "react";
 
@@ -29,14 +31,14 @@ function Leads() {
     loading: createLeadsLoading,
     error: createLeadsError,
     postData: createLeadsPostData,
-  } = usePost<LeadsData, LeadsPostData>("leads/create", true);
+  } = usePost<LeadsData[], LeadsPostData>("leads/create", true);
 
   const {
     data: leadsData,
     loading: leadsLoading,
     error: leadsError,
     getData: getLeads,
-  } = useGet<LeadsData>("leads");
+  } = useGet<LeadsData[]>("leads");
 
   const { deleteData: leadsDeleteData, loading: leadsDeleteLoading } =
     useDelete("leads/delete");
@@ -120,7 +122,7 @@ function Leads() {
                   {leadsData?.length ? (
                     <CustomTable
                       headers={["Nome", "Email", "Telefone", ""]}
-                      rows={leadsData.map((lead) => [
+                      rows={leadsData.map((lead: any) => [
                         <StyledP>{lead.name}</StyledP>,
                         <StyledP>{lead.email}</StyledP>,
                         <StyledP>{lead.phone}</StyledP>,
