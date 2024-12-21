@@ -31,7 +31,7 @@ function Leads() {
     loading: createLeadsLoading,
     error: createLeadsError,
     postData: createLeadsPostData,
-  } = usePost<LeadsData[], LeadsPostData>("leads/create", true);
+  } = usePost<LeadsData, LeadsPostData>("leads/create", true);
 
   const {
     data: leadsData,
@@ -42,6 +42,24 @@ function Leads() {
 
   const { deleteData: leadsDeleteData, loading: leadsDeleteLoading } =
     useDelete("leads/delete");
+
+    useEffect(() => {
+      if (createLeadsData?.id) {
+        setCreateMessage({
+          msg: "Lead Criado com sucesso",
+          type: "success",
+        });
+        getLeads();
+        clearMessage();
+      } else if (createLeadsError) {
+        setCreateMessage({
+          msg: "Não foi possível realizar a operação. Entre em contato com nosso suporte",
+          type: "error",
+        });
+      } else {
+        clearMessage();
+      }
+    }, [createLeadsData, createLeadsError]);
 
   //FORM
 
@@ -89,25 +107,7 @@ function Leads() {
       });
     }, 3000);
   }
-
-  useEffect(()=>{
-    if (createLeadsData?.id){
-      setCreateMessage({
-        msg:'Lead Criado com sucesso',
-        type: 'success'
-      })
-      getLeads()
-      clearMessage()
-    }else if (createLeadsError){
-      setCreateMessage({
-        msg: "Não foi possível realizar a operação. Entre em contato com nosso suporte",
-        type: 'error'
-      })
-    }else{
-      clearMessage()
-    }
-  },[createLeadsData, createLeadsError])
-
+ 
   return (
     <>
       <Header />
