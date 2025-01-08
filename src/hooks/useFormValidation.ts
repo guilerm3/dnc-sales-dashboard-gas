@@ -10,7 +10,7 @@ export const useFormValidation = (inputs: InputProps[])=> {
             const value = formValues[index]
             if(input.required && !value){
                 return false
-            }
+            } 
             if (input.type === 'email'){
                 return  /\S+@\S+\.\S+/.test(String(formValues[index ]))
             }
