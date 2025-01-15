@@ -117,40 +117,46 @@ function Profile() {
                 }
               >
                 {!profileLoading && profileData && (
-                    <>
-                      <StyledH2 className="mb-1">Seus Dados</StyledH2>
-                      <FormComponent
-                        inputs={inputs.map((input, index) => ({
-                          ...input,
-                          type: input.type,
-                          placeholder: input.placeholder,
-                          value: formValues[index] || "",
-                          onChange: (e: ChangeEvent<HTMLInputElement>) =>
-                            handleChange(
-                              index,
-                              (e.target as HTMLInputElement).value
-                            ),
-                        }))}
-                        buttons={[
-                          {
-                            className: "primary",
-                            disabled: !formValid || profileUpdateLoading,
-                            type: "submit",
-                            onClick: handleSubmit,
-                            children: profileUpdateLoading ? 'Aguarde...' : "Atualizar meu perfil",
-                          },
-                          {
-                            className: "alert",
-                            disabled: profileDeleteLoading,
-                            type: "button",
-                            onClick: handleDelete,
-                            children: profileDeleteLoading? "Aguarde..." : "Excluir minha conta",
-                          },
-                        ]}
-                        message={updateMessage}
-                      />
-                    </>
-                  )}
+                  <>
+                    <StyledH2 className="mb-1">Seus Dados</StyledH2>
+                    <FormComponent
+                      inputs={inputs.map((input, index) => ({
+                        ...input,
+                        type: input.type,
+                        placeholder: input.placeholder,
+                        value: formValues[index] || "",
+                        onChange: (e: ChangeEvent<HTMLInputElement>) =>
+                          handleChange(
+                            index,
+                            (e.target as HTMLInputElement).value
+                          ),
+                      }))}
+                      buttons={[
+                        {
+                          className: "primary",
+                          disabled: !formValid || profileUpdateLoading,
+                          id: "update-profile",
+                          type: "submit",
+                          onClick: handleSubmit,
+                          children: profileUpdateLoading
+                            ? "Aguarde..."
+                            : "Atualizar meu perfil",
+                        },
+                        {
+                          className: "alert",
+                          disabled: profileDeleteLoading,
+                          id: "delete-profile",
+                          type: "button",
+                          onClick: handleDelete,
+                          children: profileDeleteLoading
+                            ? "Aguarde..."
+                            : "Excluir minha conta",
+                        },
+                      ]}
+                      message={updateMessage}
+                    />
+                  </>
+                )}
               </CardComponent>
             )}
           </Grid>
@@ -159,12 +165,13 @@ function Profile() {
               <StyledH2 className="mb-1">Definições de conta</StyledH2>
               <StyledButton
                 className="primary mb-1"
+                id="theme-switch"
                 onClick={themeContext?.toggleTheme}
               >
                 Trocar para tema{" "}
                 {themeContext?.appTheme === "light" ? "escuro" : "claro"}
               </StyledButton>
-              <StyledButton className="alert" onClick={logout}>
+              <StyledButton className="alert" id='logout' onClick={logout}>
                 Logout
               </StyledButton>
             </CardComponent>

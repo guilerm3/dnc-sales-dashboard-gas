@@ -139,7 +139,7 @@ function Leads() {
           </Grid>
           <Grid item xs={12} sm={5}>
             <CardComponent>
-              <StyledH2 className="mb-1">Cadastrar leads</StyledH2>
+              <StyledH2 className="mb-1" id="leads-title">Cadastrar leads</StyledH2>
               <FormComponent
                 inputs={inputs.map((input, index) => ({
                   ...input,
