@@ -117,6 +117,14 @@ function Login() {
                     onClick: handleSubmit,
                     children: loading ? "Aguarde..." : "Login",
                   },
+                  {
+                    className: "primary",
+                    type: "button",
+                    onClick: () => {
+                      window.location.href = "cadastro";
+                    },
+                    children: "Cadastrar",
+                  },
                 ]}
                 message={handleMessage()}
               />
