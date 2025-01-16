@@ -1,50 +1,49 @@
-# React + TypeScript + Vite
+# Dashboard de Vendas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um dashboard interativo de vendas desenvolvido com **React** e **TypeScript/JavaScript**, projetado para gerenciar leads e perfis de usuários. A aplicação conta com funcionalidades completas e testes automatizados para garantir a confiabilidade.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades
 
-## Expanding the ESLint configuration
+- **Home**: Exibição dos leads, cujas informações são carregadas dinamicamente de uma **API**.
+- **Leads**: Gerenciamento de leads com visualização detalhada.
+- **Login**: Sistema de autenticação funcional.
+- **Profile**: Gerenciamento de perfil, com a opção de excluir o perfil e seus dados associados.
+- **Registration**: Fluxo completo de cadastro, com validações e feedbacks visuais.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## 🧪 Testes
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+A aplicação foi desenvolvida com foco na qualidade e cobertura de código, utilizando as seguintes ferramentas:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **Cypress**: Testes de ponta a ponta (E2E) para garantir a integridade das funcionalidades do sistema.
+- **Husky**: Configurado para rodar verificações antes de commits, garantindo a consistência do código.
+- **Testes Unitários**: Validação de componentes e lógicas críticas.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+---
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## 🛠️ Tecnologias Utilizadas
+
+- **React**
+- **TypeScript/JavaScript**
+- **Cypress** (Testes End-to-End)
+- **Husky**
+- **ESLint e Prettier** (Padrões de código)
+- **API REST** para carregamento de dados dinâmicos
+
+---
+
+## 🤝 Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para enviar um **pull request** ou abrir uma **issue** para discutir melhorias.
+
+---
+
+## 📞 Contato
+
+Para dúvidas ou sugestões, entre em contato:
+
+- **Nome**: Guilherme
+- **Email**: gas7@outlook.com
