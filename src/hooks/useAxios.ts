@@ -134,11 +134,11 @@ export const useDelete = <T>(endpoint: string) => {
       });
       setData(response.data);
     } catch (e: any) {
-      throw e.response?.status
+      throw e.response?.status;
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
-  return { data, loading, deleteData }
+  return { data, loading, deleteData };
 };

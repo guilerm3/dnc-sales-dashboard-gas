@@ -4,6 +4,7 @@
     "paths":{
       "@/*": ["src/*"]
     },
+    "types": ["cypress"],
     "esModuleInterop": true,
     "jsx": "react-jsx"
   },

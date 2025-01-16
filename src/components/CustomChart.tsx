@@ -22,62 +22,62 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 function CustomChart(props: CustomChartProps) {
-    const { data, labels,type } = props
-    const theme = useTheme()
-    const options = {
-        responsive: true,
-        scaleShowVerticalLines: false,
-        scales: {
-            x: {
-                border: {
-                    display: false
-                },
-                grid: {
-                    display: false
-                },
-                ticks: {
-                    color: theme.typographies.subtitle
-                }
-            },
-            y: {
-                border: {
-                    display: false,
-                },
-                grid: {
-                    color: theme.appDefaultStroke
-                },
-                tickes: {
-                    color: theme.typographies.subtitle,
-                },
-            },
+  const { data, labels, type } = props;
+  const theme = useTheme();
+  const options = {
+    responsive: true,
+    scaleShowVerticalLines: false,
+    scales: {
+      x: {
+        border: {
+          display: false,
         },
-        plugins: {
-            legend: {
-                display: false
-            }
-        }
-    }
+        grid: {
+          display: false,
+        },
+        ticks: {
+          color: theme.typographies.subtitle,
+        },
+      },
+      y: {
+        border: {
+          display: false,
+        },
+        grid: {
+          color: theme.appDefaultStroke,
+        },
+        tickes: {
+          color: theme.typographies.subtitle,
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  };
 
-    const chatData = {
-      labels,
-      datasets: [
-        {
-          data: data,
-          borderColor: "rgb(12, 112, 242)",
-          backgroundColor: "rgba(12, 112, 242, 1)",
-        },
-      ],
-    };
+  const chatData = {
+    labels,
+    datasets: [
+      {
+        data: data,
+        borderColor: "rgb(12, 112, 242)",
+        backgroundColor: "rgba(12, 112, 242, 1)",
+      },
+    ],
+  };
 
   return type == "bar" ? (
     <Bar options={options} data={chatData} />
   ) : (
     <Line options={options} data={chatData} />
-  )
+  );
 }
 
 export default CustomChart;

@@ -3,7 +3,14 @@ import { ChangeEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 //COMPONENTS
-import { BannerImage, FormComponent, StyledH1, StyledP, StyledUl, Logo } from "../components"
+import {
+  BannerImage,
+  FormComponent,
+  StyledH1,
+  StyledP,
+  StyledUl,
+  Logo,
+} from "../components";
 import { Box, Container, Grid } from "@mui/material";
 import { pxToRem } from "../utils";
 
@@ -19,26 +26,28 @@ import { setMessage, setProfileData } from "../redux/slices/createProfile";
 import { CreateProfileData, InputProps } from "../types";
 
 function Registration() {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const { email } = useSelector((state: RootState) => state.createProfile)
-  const { data, loading, error, postData } = usePost<string, CreateProfileData>("profile/create");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { email } = useSelector((state: RootState) => state.createProfile);
+  const { data, loading, error, postData } = usePost<string, CreateProfileData>(
+    "profile/create",
+  );
 
-  //FORM STEP1  
+  //FORM STEP1
   const step1Inputs: InputProps[] = [
     { name: "name", type: "text", placeholder: "Nome", required: true },
     { name: "email", type: "email", placeholder: "Email", disabled: true },
     { name: "phone", type: "tel", placeholder: "Telefone", required: true },
   ];
 
-  const handleStep1 = (e: React.FormEvent) =>{
-    e.preventDefault()
+  const handleStep1 = (e: React.FormEvent) => {
+    e.preventDefault();
     dispatch(
       setProfileData({
-        email: String(step1FormValues[1])
-      })
-    )
-  }
+        email: String(step1FormValues[1]),
+      }),
+    );
+  };
 
   const {
     formValues: step1FormValues,
@@ -48,35 +57,35 @@ function Registration() {
 
   //FORM STEP2
   const step2Inputs: InputProps[] = [
-    { type: "password", placeholder: "Senha"}
-  ]
-  const handleStep2 = async (e: React. FormEvent) =>{
-    e.preventDefault()
+    { type: "password", placeholder: "Senha" },
+  ];
+  const handleStep2 = async (e: React.FormEvent) => {
+    e.preventDefault();
     await postData({
       name: String(step1FormValues[0]),
       email: String(step1FormValues[1]),
       phone: String(step1FormValues[2]),
       password: String(step2FormValues[0]),
     });
-  }
+  };
   const {
     formValues: step2FormValues,
     formValid: step2FormValid,
     handleChange: step2FormHanldeChange,
-  } = useFormValidation(step2Inputs)
+  } = useFormValidation(step2Inputs);
 
-  const handleStepInputs = email ? step2Inputs : step1Inputs
+  const handleStepInputs = email ? step2Inputs : step1Inputs;
 
-  useEffect(() =>{
-    if(data !== null){
-      dispatch(setMessage('Usuário criado com sucesso.'))
-      navigate('/')
-    }else if (error) {
+  useEffect(() => {
+    if (data !== null) {
+      dispatch(setMessage("Usuário criado com sucesso."));
+      navigate("/");
+    } else if (error) {
       alert(
-        `Não foi possível realizar a operação. Entre em contato com nosso suporte (${error}).`
+        `Não foi possível realizar a operação. Entre em contato com nosso suporte (${error}).`,
       );
     }
-  },[data, error, navigate])
+  }, [data, error, navigate]);
 
   return (
     <>
@@ -122,20 +131,22 @@ function Registration() {
                     email
                       ? step2FormHanldeChange(
                           index,
-                          (e.target as HTMLInputElement).value
+                          (e.target as HTMLInputElement).value,
                         )
                       : step1FormHanldeChange(
                           index,
-                          (e.target as HTMLInputElement).value
+                          (e.target as HTMLInputElement).value,
                         ),
                 }))}
                 buttons={[
                   {
                     className: "primary",
-                    disabled: email ? !step2FormValid || loading : !step1FormValid,
+                    disabled: email
+                      ? !step2FormValid || loading
+                      : !step1FormValid,
                     onClick: email ? handleStep2 : handleStep1,
                     type: "submit",
-                    children: email ? 'Enviar' : 'Próximo',
+                    children: email ? "Enviar" : "Próximo",
                   },
                 ]}
               />
