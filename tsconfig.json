@@ -2,8 +2,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths":{
-      "@*": ["src/*"]
-    }
+      "@/*": ["src/*"]
+    },
+    "types": ["cypress"],
+    "esModuleInterop": true,
+    "jsx": "react-jsx"
   },
   "files": [],
   "references": [
