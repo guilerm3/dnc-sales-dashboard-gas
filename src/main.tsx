@@ -4,7 +4,7 @@ import App from "./App.tsx";
 import { GlobalStyle } from "./styles/globalStyle.ts";
 import { AppThemeProvider } from "./contexts/AppThemeProvider.tsx";
 import { Provider } from "react-redux";
-import store from './redux/index.ts'
+import store from "./redux/index.ts";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -14,5 +14,5 @@ createRoot(document.getElementById("root")!).render(
         <App />
       </AppThemeProvider>
     </Provider>
-  </StrictMode>
+  </StrictMode>,
 );

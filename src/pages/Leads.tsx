@@ -23,7 +23,6 @@ import { useFormValidation, useGet, usePost, useDelete } from "../hooks";
 import { InputProps, LeadsData, LeadsPostData, MessageProps } from "../types";
 
 function Leads() {
-
   //HOOKS
 
   const {
@@ -43,23 +42,23 @@ function Leads() {
   const { deleteData: leadsDeleteData, loading: leadsDeleteLoading } =
     useDelete("leads/delete");
 
-    useEffect(() => {
-      if (createLeadsData?.id) {
-        setCreateMessage({
-          msg: "Lead Criado com sucesso",
-          type: "success",
-        });
-        getLeads();
-        clearMessage();
-      } else if (createLeadsError) {
-        setCreateMessage({
-          msg: "Não foi possível realizar a operação. Entre em contato com nosso suporte",
-          type: "error",
-        });
-      } else {
-        clearMessage();
-      }
-    }, [createLeadsData, createLeadsError]);
+  useEffect(() => {
+    if (createLeadsData?.id) {
+      setCreateMessage({
+        msg: "Lead Criado com sucesso",
+        type: "success",
+      });
+      getLeads();
+      clearMessage();
+    } else if (createLeadsError) {
+      setCreateMessage({
+        msg: "Não foi possível realizar a operação. Entre em contato com nosso suporte",
+        type: "error",
+      });
+    } else {
+      clearMessage();
+    }
+  }, [createLeadsData, createLeadsError]);
 
   //FORM
 
@@ -78,21 +77,19 @@ function Leads() {
     });
   };
 
-  const handleDelete = async (id: number) =>{
-    if (
-      confirm (
-        'Tem certeza que deseja excluir seu lead?'
-      ) === true
-    ) {
-      try{
-        await leadsDeleteData({params: {id: id}})
-        alert('Lead deletado com sucesso!')
+  const handleDelete = async (id: number) => {
+    if (confirm("Tem certeza que deseja excluir seu lead?") === true) {
+      try {
+        await leadsDeleteData({ params: { id: id } });
+        alert("Lead deletado com sucesso!");
         getLeads();
-      }catch (e) {
-        alert('Não foi possível realizar a operação. Entre em contato com nosso suporte')
+      } catch (e) {
+        alert(
+          "Não foi possível realizar a operação. Entre em contato com nosso suporte",
+        );
       }
     }
-  }
+  };
 
   const [createMessage, setCreateMessage] = useState<MessageProps>({
     type: "success",
@@ -106,18 +103,21 @@ function Leads() {
         msg: "",
       });
     }, 3000);
-  }
- 
+  };
+
   return (
     <>
       <Header />
       <Container className="mb-2" maxWidth="lg">
         <Grid container spacing={4}>
           <Grid item xs={12} sm={7}>
-            <CardComponent className={leadsLoading ? 'skeleton-loading skeleton-loading-mh-2' : ''}>
-              {
-                !leadsError && !leadsLoading && (
-                  <>
+            <CardComponent
+              className={
+                leadsLoading ? "skeleton-loading skeleton-loading-mh-2" : ""
+              }
+            >
+              {!leadsError && !leadsLoading && (
+                <>
                   <StyledH2 className="mb-1">Meus leads</StyledH2>
                   {leadsData?.length ? (
                     <CustomTable
@@ -126,20 +126,27 @@ function Leads() {
                         <StyledP>{lead.name}</StyledP>,
                         <StyledP>{lead.email}</StyledP>,
                         <StyledP>{lead.phone}</StyledP>,
-                        <StyledButton className="borderless-alert" onClick={()=> handleDelete(lead.id)} disabled={leadsDeleteLoading}>Excluir</StyledButton>
+                        <StyledButton
+                          className="borderless-alert"
+                          onClick={() => handleDelete(lead.id)}
+                          disabled={leadsDeleteLoading}
+                        >
+                          Excluir
+                        </StyledButton>,
                       ])}
                     />
                   ) : (
                     <StyledSpan>Sem leads cadatrados</StyledSpan>
                   )}
-                  </>
-                )
-              }
+                </>
+              )}
             </CardComponent>
           </Grid>
           <Grid item xs={12} sm={5}>
             <CardComponent>
-              <StyledH2 className="mb-1" id="leads-title">Cadastrar leads</StyledH2>
+              <StyledH2 className="mb-1" id="leads-title">
+                Cadastrar leads
+              </StyledH2>
               <FormComponent
                 inputs={inputs.map((input, index) => ({
                   ...input,
@@ -152,7 +159,8 @@ function Leads() {
                 buttons={[
                   {
                     className: "primary",
-                    disabled: !formValid || createLeadsLoading || leadsDeleteLoading,
+                    disabled:
+                      !formValid || createLeadsLoading || leadsDeleteLoading,
                     type: "submit",
                     onClick: handleSubmit,
                     children: "Cadastrar leads",

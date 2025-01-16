@@ -1,6 +1,6 @@
-import styled from "styled-components"
-import { CustomTableProps } from "../types"
-import { pxToRem } from "../utils"
+import styled from "styled-components";
+import { CustomTableProps } from "../types";
+import { pxToRem } from "../utils";
 
 const TableWrapper = styled.div`
   overflor-x: auto;
@@ -50,34 +50,29 @@ const TableWrapper = styled.div`
 `;
 
 function CustomTable(props: CustomTableProps) {
-    const { headers, rows } = props
-  return <TableWrapper>
-    <table>
+  const { headers, rows } = props;
+  return (
+    <TableWrapper>
+      <table>
         <thead>
-            <tr>
-                {
-                    headers.map((header, index) => (
-                        <th key={index}>{header}</th>
-                    ))
-                }
-            </tr>
+          <tr>
+            {headers.map((header, index) => (
+              <th key={index}>{header}</th>
+            ))}
+          </tr>
         </thead>
         <tbody>
-            {
-                rows.map((row, rowIndex) =>(
-                    <tr key={rowIndex}>
-                        {
-                            row.map((cell, cellIndex)=>(
-                                <td key={cellIndex}>{cell}</td>
-                            ))
-                        }
-                    </tr>
-                ))
-            }
+          {rows.map((row, rowIndex) => (
+            <tr key={rowIndex}>
+              {row.map((cell, cellIndex) => (
+                <td key={cellIndex}>{cell}</td>
+              ))}
+            </tr>
+          ))}
         </tbody>
-    </table>
-
-  </TableWrapper>;
+      </table>
+    </TableWrapper>
+  );
 }
 
 export default CustomTable;

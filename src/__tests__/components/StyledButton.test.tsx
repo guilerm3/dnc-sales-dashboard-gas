@@ -9,12 +9,11 @@ describe("StyledButton", () => {
     render(
       <ThemeProvider theme={theme}>
         <StyledButton className={className} {...props} />
-      </ThemeProvider>
+      </ThemeProvider>,
     );
 
   themeList.forEach(({ name, theme }) => {
     describe(`${name}`, () => {
-
       it("should match the snapshot with alert class", () => {
         const { asFragment } = renderComponent(theme, "alert");
         expect(asFragment()).toMatchSnapshot();
@@ -31,7 +30,9 @@ describe("StyledButton", () => {
       });
 
       it("should match the snapshot with disabled status", () => {
-        const { asFragment } = renderComponent(theme, "primary", {disabled: true});
+        const { asFragment } = renderComponent(theme, "primary", {
+          disabled: true,
+        });
         expect(asFragment()).toMatchSnapshot();
       });
     });

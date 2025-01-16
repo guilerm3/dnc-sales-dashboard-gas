@@ -1,4 +1,4 @@
-import  styled from "styled-components"
+import styled from "styled-components";
 import { pxToRem } from "../utils";
 
 export const CardComponent = styled.div`
@@ -20,8 +20,8 @@ export const CardComponent = styled.div`
     background-color: ${(props) => props.theme.card.warning};
     border-color: ${(props) => props.theme.card.warning};
   }
-  a{
+  a {
     color: inherit;
     text-decoration: none;
-    }
+  }
 `;

@@ -10,7 +10,6 @@ export const StyledH1 = styled.h1<TypohraphiesProps>`
   line-height: ${(props) => pxToRem(props.lineheight || 36)};
 `;
 
-
 export const StyledH2 = styled.h2<TypohraphiesProps>`
   color: ${(props) => props.color || "inherit"};
   font-size: ${(props) => pxToRem(props.size || 16)};

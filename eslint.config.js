@@ -2,27 +2,29 @@ import js from "@eslint/js";
 import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
-import tseslint from "typescript-eslint";
-import prettier from "eslint-config-prettier";
 import cypress from "eslint-plugin-cypress";
+import prettierConfig from "eslint-config-prettier";
+import pluginJs from "@eslint/js";
 
-export default tseslint.config(
-  { ignores: ["dist"] },
+
+export default [
+  { languageOptions: { globals: globals.browser } },
+  pluginJs.configs.recommended,
   {
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-      "plugin:cypress/recommended",
-      prettier,
-    ],
-    files: ["**/*.{ts,tsx,js,jsx}"],
+    ignores: ["dist"],
+  },
+  js.configs.recommended,
+  {
+    files: ["**/*.cy.{ts,tsx,js,jsx}"],
     languageOptions: {
-      ecmaVersion: 2020,
+      ecmaVersion: 2021,
       globals: {
         ...globals.browser,
         ...globals.node,
         ...globals.mocha,
         ...globals.jest,
+        ...globals.cypress,
+        cy: true,
       },
     },
     plugins: {
@@ -30,15 +32,14 @@ export default tseslint.config(
       "react-refresh": reactRefresh,
       cypress,
     },
-    env: {
-      "cypress/globals": true,
-    },
     rules: {
       ...reactHooks.configs.recommended.rules,
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },
       ],
+      "no-unused-vars": "warn",
     },
-  }
-);
+  },
+  prettierConfig,
+];
