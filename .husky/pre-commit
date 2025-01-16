@@ -6,7 +6,7 @@ npm run format
 
 # Lint
 echo 'Running Lint...'
-npm run Lint
+npm run lint
 
 # Unit tests
 echo 'Running Unit tests...'
