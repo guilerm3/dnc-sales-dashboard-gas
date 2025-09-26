@@ -34,8 +34,8 @@ function Login() {
     (state: RootState) => state.createProfile,
   );
   const inputs = [
-    { type: "email", placeholder: "Email" },
-    { type: "password", placeholder: "Senha" },
+    { type: "email", placeholder: "teste@gmail.com" },
+    { type: "password", placeholder: "Teste123@" },
   ];
   const { data, loading, error, postData } = usePost<LoginData, LoginPostData>(
     "login",
